@@ -98,6 +98,13 @@ will start to pass.
 
 Note: an [SBT](https://www.scala-sbt.org) build is also provided.
 
+```sh
+# All tests
+sbt test
+# Specific tests
+sbt "testOnly fpinscala.exercises.gettingstarted.GettingStartedSuite"
+```
+
 ### License
 
 All code in this repository is
