@@ -52,7 +52,10 @@ object List: // `List` companion object. Contains functions for creating and wor
       case Nil => throw new Exception("List is empty")
       case Cons(x, xs) => xs
 
-  def setHead[A](l: List[A], h: A): List[A] = ???
+  def setHead[A](l: List[A], h: A): List[A] =
+    l match
+      case Nil => throw new Exception("List is empty")
+      case Cons(_, xs) => Cons(h, xs)
 
   def drop[A](l: List[A], n: Int): List[A] = ???
 
