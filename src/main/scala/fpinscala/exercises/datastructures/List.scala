@@ -72,7 +72,15 @@ object List: // `List` companion object. Contains functions for creating and wor
     loop(l)
   }
 
-  def init[A](l: List[A]): List[A] = ???
+  def init[A](l: List[A]): List[A] = {
+    @annotation.tailrec
+    def loop(l: List[A], res: List[A]): List[A] =
+      l match
+        case Nil => throw new Exception("List is empty")
+        case Cons(x, Nil) => res
+        case Cons(x, xs) => loop(xs, append(res, Cons(x, Nil)))
+    loop(l, Nil)
+  }
 
   def length[A](l: List[A]): Int = ???
 
