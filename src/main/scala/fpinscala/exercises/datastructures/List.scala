@@ -64,6 +64,7 @@ object List: // `List` companion object. Contains functions for creating and wor
       else drop(xs, n - 1)
 
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = {
+    @annotation.tailrec
     def loop(l: List[A]): List[A] = l match 
       case Nil => Nil
       case Cons(x, xs) =>
