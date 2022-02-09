@@ -95,7 +95,8 @@ object List: // `List` companion object. Contains functions for creating and wor
     loop(l, acc)
   }
 
-  def sumViaFoldLeft(ns: List[Int]) = ???
+  def sumViaFoldLeft(ns: List[Int]) =
+    foldLeft(ns, 0, _ + _)
 
   def productViaFoldLeft(ns: List[Double]) = ???
 
