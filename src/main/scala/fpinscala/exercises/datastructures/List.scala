@@ -77,7 +77,7 @@ object List: // `List` companion object. Contains functions for creating and wor
       l match
         case Nil => throw new Exception("List is empty")
         case Cons(x, Nil) => res
-        case Cons(x, xs) => loop(xs, append(res, Cons(x, Nil)))
+        case Cons(x, xs) => loop(xs, append(res, List(x)))
     loop(l, Nil)
   }
 
