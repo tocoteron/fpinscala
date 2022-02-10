@@ -137,5 +137,14 @@ object List: // `List` companion object. Contains functions for creating and wor
   }
 
   // def zipWith - TODO determine signature
+  def zipWith[A,B,C](a: List[A], b: List[B], f: (A, B) => C): List[C] = {
+    @annotation.tailrec
+    def loop(a: List[A], b: List[B], acc: List[C]): List[C] =
+      (a, b) match
+        case (Nil, _) => acc
+        case (_, Nil) => acc
+        case (Cons(ah, at), Cons(bh, bt)) => loop(at, bt, Cons(f(ah, bh), acc))
+    reverse(loop(a, b, Nil))
+  }
 
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = ???
