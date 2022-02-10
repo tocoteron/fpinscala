@@ -126,7 +126,8 @@ object List: // `List` companion object. Contains functions for creating and wor
       else xs
     )
 
-  def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] = ???
+  def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] =
+    foldRight(as, Nil: List[B], (x, xs) => append(f(x), xs))
 
   def addPairwise(a: List[Int], b: List[Int]): List[Int] = ???
 
