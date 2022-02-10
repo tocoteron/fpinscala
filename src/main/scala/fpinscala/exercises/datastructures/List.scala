@@ -130,10 +130,10 @@ object List: // `List` companion object. Contains functions for creating and wor
     @annotation.tailrec
     def loop(a: List[Int], b: List[Int], acc: List[Int]): List[Int] =
       (a, b) match
-        case (Nil, _) => reverse(acc)
-        case (_, Nil) => reverse(acc)
+        case (Nil, _) => acc
+        case (_, Nil) => acc
         case (Cons(ah, at), Cons(bh, bt)) => loop(at, bt, Cons(ah + bh, acc))
-    loop(a, b, Nil)
+    reverse(loop(a, b, Nil))
   }
 
   // def zipWith - TODO determine signature
