@@ -98,7 +98,8 @@ object List: // `List` companion object. Contains functions for creating and wor
   def sumViaFoldLeft(ns: List[Int]) =
     foldLeft(ns, 0, _ + _)
 
-  def productViaFoldLeft(ns: List[Double]) = ???
+  def productViaFoldLeft(ns: List[Double]) =
+    foldLeft(ns, 1.0, _ * _)
 
   def lengthViaFoldLeft[A](l: List[A]): Int = ???
 
