@@ -37,9 +37,7 @@ object List: // `List` companion object. Contains functions for creating and wor
       case Cons(h,t) => Cons(h, append(t, a2))
 
   def foldRight[A,B](as: List[A], acc: B, f: (A, B) => B): B = // Utility functions
-    as match
-      case Nil => acc
-      case Cons(x, xs) => f(x, foldRight(xs, acc, f))
+    foldLeft(reverse(as), acc, (b, a) => f(a, b))
 
   def sumViaFoldRight(ns: List[Int]) =
     foldRight(ns, 0, (x,y) => x + y)
