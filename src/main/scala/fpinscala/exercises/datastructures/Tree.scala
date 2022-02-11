@@ -23,8 +23,9 @@ enum Tree[+A]:
   def sizeViaFold: Int =
     this.fold(x => 1, 1 + _ + _)
   
-  def depthViaFold: Int = ???
-  
+  def depthViaFold: Int =
+    this.fold(x => 0, (l, r) => 1 + (l max r))
+
   def mapViaFold[B](f: A => B): Tree[B] = ???
 
 object Tree:
