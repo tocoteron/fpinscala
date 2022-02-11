@@ -23,7 +23,9 @@ enum Option[+A]:
     case None => ob
     case Some(x) => Some(x)
 
-  def filter(f: A => Boolean): Option[A] = ???
+  def filter(f: A => Boolean): Option[A] = this match
+    case None => None
+    case Some(x) => if f(x) then Some(x) else None
 
 object Option:
 
