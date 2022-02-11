@@ -7,7 +7,9 @@ enum Option[+A]:
   case Some(get: A)
   case None
 
-  def map[B](f: A => B): Option[B] = ???
+  def map[B](f: A => B): Option[B] = this match
+    case None => None
+    case Some(x) => Some(f(x))
 
   def getOrElse[B>:A](default: => B): B = ???
 
