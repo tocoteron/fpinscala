@@ -44,7 +44,14 @@ object Either:
     try Right(a)
     catch case NonFatal(t) => Left(t)
 
-  def map2All[E, A, B, C](a: Either[List[E], A], b: Either[List[E], B], f: (A, B) => C): Either[List[E], C] = ???
+  def map2All[E, A, B, C](a: Either[List[E], A], b: Either[List[E], B], f: (A, B) => C): Either[List[E], C] =
+    a match
+      case Left(ae) => b match
+        case Left(be) => Left(ae ::: be)
+        case Right(bb) => Left(ae)
+      case Right(aa) => b match
+        case Left(be) => Left(be)
+        case Right(bb) => Right(f(aa, bb))
 
   def traverseAll[E, A, B](es: List[A], f: A => Either[List[E], B]): Either[List[E], List[B]] = ???
 
