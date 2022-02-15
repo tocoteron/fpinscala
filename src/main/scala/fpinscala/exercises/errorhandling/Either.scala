@@ -49,9 +49,7 @@ object Either:
       case Left(ae) => b match
         case Left(be) => Left(ae ::: be)
         case Right(bb) => Left(ae)
-      case Right(aa) => b match
-        case Left(be) => Left(be)
-        case Right(bb) => Right(f(aa, bb))
+      case Right(aa) => a.map2(b)(f)
 
   def traverseAll[E, A, B](es: List[A], f: A => Either[List[E], B]): Either[List[E], List[B]] = ???
 
