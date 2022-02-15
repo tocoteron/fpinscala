@@ -54,4 +54,5 @@ object Either:
   def traverseAll[E, A, B](es: List[A], f: A => Either[List[E], B]): Either[List[E], List[B]] =
     es.foldRight(Right(Nil): Either[List[E], List[B]])((e, acc) => map2All(f(e), acc, _ :: _))
 
-  def sequenceAll[E, A](es: List[Either[List[E], A]]): Either[List[E], List[A]] = ???
+  def sequenceAll[E, A](es: List[Either[List[E], A]]): Either[List[E], List[A]] =
+    es.foldRight(Right(Nil): Either[List[E], List[A]])((e, acc) => map2All(e, acc, _ :: _))
